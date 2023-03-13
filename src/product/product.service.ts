@@ -18,10 +18,14 @@ export class ProductService {
     });
   }
 
-  // GET PRODUCT BY NAME
-  getProductByName(product_name: string) {
+  // SEARCH PRODUCTS BY NAME
+  searchByName(classify: string) {
     return this.prisma.product.findMany({
-      where: { product_name: product_name },
+      where: {
+        classify: {
+          contains: classify,
+        },
+      },
     });
   }
 

@@ -28,15 +28,16 @@ export class ProductController {
     return this.productService.getAllProduct();
   }
 
+  // SEARCH BY NAME
+  @Get('search?')
+  searchByName(@Query('classify') classify: string) {
+    console.log('classify: ', classify);
+    return this.productService.searchByName(classify);
+  }
+
   // GET PRODUCT BY ID
   @Get(':id')
   getProductById(@Param('id') id: string) {
     return this.productService.getProductById(id);
-  }
-
-  // SEARCH BY NAME
-  @Get('search')
-  searchByName(@Query() product_name: string): string {
-    return this.searchByName(product_name);
   }
 }
